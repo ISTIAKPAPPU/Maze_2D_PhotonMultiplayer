@@ -63,6 +63,11 @@ public class GameManager : MonoBehaviourPunCallbacks
         }
     }
 
+    public override void OnConnectedToMaster()
+    {
+        Debug.Log(PhotonNetwork.NickName + " is Connected To Photon");
+    }
+
     public override void OnPlayerEnteredRoom(Player newPlayer)
     {
         Debug.Log(newPlayer.NickName + " joined to " + PhotonNetwork.CurrentRoom.Name + " PlayerCount: " +
@@ -76,8 +81,10 @@ public class GameManager : MonoBehaviourPunCallbacks
     IEnumerator StartGame()
     {
         timer.SetActive(true);
-        yield return new WaitForSeconds(5f);
+        yield return new WaitForSeconds(3f);
         GameValues.IsGameStart = true;
+        GameValues.IsGameOver = false;
+        GameValues.IsPlayerWin = false;
     }
 
     public override void OnLeftRoom()

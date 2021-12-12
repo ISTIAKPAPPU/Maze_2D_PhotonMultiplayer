@@ -14,13 +14,13 @@ public class PlayerSetup : MonoBehaviourPunCallbacks
         Debug.Log("enter");
         if (photonView.IsMine)
         {
-            Debug.Log("entertrue");
+            Debug.Log("enter   true: " + PhotonNetwork.NickName);
             GetComponent<TouchAndGo>().enabled = true;
             // GetComponent<PlayerControl>().enabled = true;
         }
         else
         {
-            Debug.Log("enterfalse");
+            Debug.Log("enter  false: " + PhotonNetwork.NickName);
             GetComponent<TouchAndGo>().enabled = false;
             // GetComponent<PlayerControl>().enabled = false;
         }

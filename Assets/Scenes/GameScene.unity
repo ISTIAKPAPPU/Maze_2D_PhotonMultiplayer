@@ -371,7 +371,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   filler: {fileID: 194282471}
   coolingDown: 0
-  waitTime: 30
+  waitTime: 50
   gradient:
     serializedVersion: 2
     key0: {r: 1, g: 0.052164298, b: 0.0039215684, a: 1}

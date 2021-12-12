@@ -11,7 +11,7 @@ public class TouchAndGo : MonoBehaviour
     private Touch _touch;
     private Vector3 _touchPosition, _whereToMove;
     private bool _isMoving = false;
-    public GameObject hitParticle;
+   // public GameObject hitParticle;
     private float _previousDistanceToTouchPos, _currentDistanceToTouchPos;
     public static event Action EndGameParticles;
 
@@ -35,14 +35,18 @@ public class TouchAndGo : MonoBehaviour
         if (!GameValues.IsGameStart) return;
         if (GameValues.IsGameOver) return;
         if (_isMoving)
+        {
             _currentDistanceToTouchPos = (_touchPosition - transform.position).magnitude;
-
+        }
         if (Input.touchCount > 0)
         {
+            
             _touch = Input.GetTouch(0);
+            Debug.Log(" _touch 0");
 
             if (_touch.phase == TouchPhase.Began)
             {
+                Debug.Log(" _touch.Began");
                 _previousDistanceToTouchPos = 0;
                 _currentDistanceToTouchPos = 0;
                 _isMoving = true;
@@ -68,7 +72,7 @@ public class TouchAndGo : MonoBehaviour
         if (!other.gameObject.CompareTag("EndGame"))
         {
             AudioManager.Instance.Play(AudioManager.SoundType.Hit);
-            hitParticle.GetComponent<ParticleSystem>().Play();
+           // hitParticle.GetComponent<ParticleSystem>().Play();
         }
         else
         {
